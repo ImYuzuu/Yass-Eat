@@ -1,0 +1,29 @@
+# compose.yml
+
+services:
+  api:
+    build: . # Construit l'image Docker en utilisant le Dockerfile du répertoire courant
+    container_name: my-task-api
+    ports:
+      - "3000:3000" # Mappe le port 3000 du conteneur au port 3000 de votre machine
+    volumes:
+      - .:/app # Monte le répertoire courant dans /app du conteneur pour le développement live
+      - /app/node_modules # Empêche le node_modules local d'écraser celui du conteneur
+    environment:
+      # Les variables d'environnement pour l'API.
+      - PORT=3000
+      - MONGO_URI=mongodb://mongo:27017/taskdb
+    depends_on:
+      - mongo 
+
+  # --- Service pour la base de données MongoDB ---
+  mongo:
+    image: mongo:latest # Utilise l'image MongoDB officielle depuis Docker Hub
+    container_name: my-task-mongo
+    ports:
+      - "27017:27017" # Mappe le port de Mongo pour pouvoir s'y connecter depuis votre machine si besoin
+    volumes:
+      - mongo-data:/data/db # Persiste les données de la BDD dans un volume nommé
+
+volumes:
+  mongo-data: # Déclare le volume nommé pour la persistance des données

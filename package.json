@@ -1,0 +1,25 @@
+{
+  "name": "yass-eat",
+  "version": "1.0.0",
+  "description": "Uber eats but in our own way",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImYuzuu/Yass-Eat.git"
+  },
+  "author": "Benoit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImYuzuu/Yass-Eat/issues"
+  },
+  "homepage": "https://github.com/ImYuzuu/Yass-Eat#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
+  }
+}
